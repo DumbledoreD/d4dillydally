@@ -6,3 +6,8 @@ repos:
     rev: v2.3.2
     hooks:
       - id: prettier
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v7.32.0
+    hooks:
+      - id: eslint
+        args: ["--max-warnings=0", "--fix"]
