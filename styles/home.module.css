@@ -1,6 +1,13 @@
 .fullScreen {
   width: 100vw;
   height: 100vh;
+  position: relative;
+}
+
+.hanZi {
+  position: absolute;
+  top: 32px;
+  left: 32px;
 }
 
 .flexBox {
