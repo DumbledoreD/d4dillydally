@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import styles from "styles/home.module.css";
 
-import HanZi from "features/HanZi";
+import HanZi from "components/HanZi";
 
 const Home: NextPage = () => {
   return (
