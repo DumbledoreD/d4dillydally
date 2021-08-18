@@ -7,3 +7,6 @@ tasks:
 
   - name: personalize terminal
     command: cat .personal.bashrc >> ~/.bashrc && . ~/.bashrc && exit
+
+  - name: yarn install
+    command: yarn install && exit
