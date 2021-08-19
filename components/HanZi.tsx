@@ -1,5 +1,6 @@
-import React, { useRef, useEffect } from "react";
+// Ref: https://blog.csdn.net/cg1985cg/article/details/113062426
 import * as d3 from "d3";
+import React, { useEffect, useRef } from "react";
 
 const HanZi = ({
   children,
@@ -7,7 +8,7 @@ const HanZi = ({
 }: {
   children: string;
   containerClass: string;
-}) => {
+}): JSX.Element => {
   const svgRef = useRef(null);
 
   const width = 210,
