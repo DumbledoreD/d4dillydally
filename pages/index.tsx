@@ -1,7 +1,8 @@
-import HanZi from "components/HanZi";
+import Box from "@material-ui/core/Box";
+import NeonLighting from "components/NeonLighting";
+import neonStyles from "components/neonLighting.module.css";
 import type { NextPage } from "next";
 import Head from "next/head";
-import styles from "styles/home.module.css";
 
 const Home: NextPage = () => {
   return (
@@ -10,12 +11,19 @@ const Home: NextPage = () => {
         <title>D for Dilly Dally</title>
       </Head>
 
-      <main
-        className={`${styles.background} ${styles.fullScreen} ${styles.flexBox}`}
+      <Box
+        component="main"
+        className={`${neonStyles.background}`}
+        sx={{
+          width: "100vw",
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
-        <HanZi containerClass={styles.hanZi}>游手好闲</HanZi>
-        <h1 className={`${styles.header} ${styles.glow}`}>D4DillyDally</h1>
-      </main>
+        <NeonLighting tag="h1">D4DillyDally</NeonLighting>
+      </Box>
     </>
   );
 };

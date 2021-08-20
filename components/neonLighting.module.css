@@ -1,20 +1,4 @@
-.fullScreen {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-}
-
-.hanZi {
-  position: absolute;
-  top: 32px;
-  left: 32px;
-}
-
-.flexBox {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
+/* Ref: https://codepen.io/FelixRilling/pen/qzfoc */
 
 .background {
   background-color: #222222;
@@ -28,37 +12,25 @@
     0 / 15px 15px;
 }
 
-/* Neon, ref: https://codepen.io/FelixRilling/pen/qzfoc */
-.header {
+.typography {
   color: #ffdd1b;
+  cursor: pointer;
+  margin: 0;
+
   font-family: Pacifico;
   font-size: 7em;
-  margin: 0;
   text-align: center;
   user-select: none;
+
+  animation: none;
+  transition: all 1s;
 }
 
-@media (max-width: 900px) {
-  .header {
-    font-size: 3.5em;
-  }
+.animate {
+  animation: neon 1.5s ease-in-out infinite alternate;
 }
 
-@media (max-width: 320px) {
-  .header {
-    font-size: 2em;
-  }
-}
-
-.glow {
-  animation: neon3 1.5s ease-in-out infinite alternate;
-}
-
-.glow:hover {
-  transition: all 0.5s;
-}
-
-@keyframes neon3 {
+@keyframes neon {
   from {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffdd1b,
       0 0 70px #ffdd1b, 0 0 80px #ffdd1b, 0 0 100px #ffdd1b, 0 0 150px #ffdd1b;
