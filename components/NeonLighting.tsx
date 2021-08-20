@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import React, { useEffect, useState } from "react";
+import clsx from "clsx";
 
 import styles from "./neonLighting.module.css";
 

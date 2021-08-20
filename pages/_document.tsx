@@ -1,8 +1,10 @@
 // Ref: https://github.com/mui-org/material-ui/tree/next/examples/nextjs-with-typescript
-import createEmotionServer from "@emotion/server/create-instance";
-import { createEmotionCache, theme } from "features/theme";
-import Document, { Head, Html, Main, NextScript } from "next/document";
+
 import * as React from "react";
+import createEmotionServer from "@emotion/server/create-instance";
+import Document, { Head, Html, Main, NextScript } from "next/document";
+
+import { createEmotionCache, theme } from "features/theme";
 
 export default class MyDocument extends Document {
   // TODO(ydeng): Why do I need to type this? Is there a better way?

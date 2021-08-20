@@ -14,7 +14,21 @@ module.exports = {
     "testing-library",
   ],
   rules: {
-    "simple-import-sort/imports": "error",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        groups: [
+          // Side effects.
+          ["^\\u0000"],
+          // Packages.
+          ["^react", "^@?\\w"],
+          // Relative and base url imports
+          ["^(components|features|pages|types)/", "^\\."],
+          // CSS modules
+          ["^.*\\.module\\.css"],
+        ],
+      },
+    ],
     "simple-import-sort/exports": "error",
   },
   overrides: [
