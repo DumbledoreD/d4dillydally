@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./neonLighting.module.css";
 
@@ -11,12 +11,23 @@ const NeonLighting = ({
   children,
   tag: Tag,
 }: NeonLightingProps): JSX.Element => {
-  const [active, setActive] = useState<boolean>(true);
+  const [flicker, setFlicker] = useState<boolean>(true);
+  const [active, setActive] = useState<boolean>(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFlicker(false);
+      setActive(true);
+    }, 6000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Tag
-      className={`${styles.typography} ${active ? styles.animate : ""}`}
-      onClick={() => setActive(!active)}
+      className={`${styles.typography} ${active ? styles.animate : ""} ${
+        flicker ? styles.flicker : ""
+      }`}
+      onClick={() => !flicker && setActive(!active)}
     >
       {children}
     </Tag>
