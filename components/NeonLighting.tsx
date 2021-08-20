@@ -5,16 +5,19 @@ import styles from "./neonLighting.module.css";
 
 type NeonLightingProps = {
   children: string;
-  tag: keyof JSX.IntrinsicElements;
+  component: keyof JSX.IntrinsicElements;
+  className?: string;
 };
 
 const NeonLighting = ({
   children,
-  tag: Tag,
+  component: Component,
+  className,
 }: NeonLightingProps): JSX.Element => {
   const [flicker, setFlicker] = useState<boolean>(true);
   const [active, setActive] = useState<boolean>(false);
 
+  // Initial flicker
   useEffect(() => {
     const timer = setTimeout(() => {
       setFlicker(false);
@@ -24,16 +27,17 @@ const NeonLighting = ({
   }, []);
 
   return (
-    <Tag
+    <Component
       className={clsx(
         styles.typography,
         active && styles.animate,
-        flicker && styles.flicker
+        flicker && styles.flicker,
+        className
       )}
       onClick={() => !flicker && setActive(!active)}
     >
       {children}
-    </Tag>
+    </Component>
   );
 };
 
