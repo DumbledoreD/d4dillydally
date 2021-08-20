@@ -18,3 +18,5 @@ repos:
     hooks:
       - id: eslint
         args: ["--max-warnings=0", "--fix"]
+        files: \.[jt]sx?$
+        types: [file]
