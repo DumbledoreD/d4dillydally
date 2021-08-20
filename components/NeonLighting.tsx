@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 
 import styles from "./neonLighting.module.css";
@@ -18,15 +19,17 @@ const NeonLighting = ({
     const timer = setTimeout(() => {
       setFlicker(false);
       setActive(true);
-    }, 6000);
+    }, 5000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <Tag
-      className={`${styles.typography} ${active ? styles.animate : ""} ${
-        flicker ? styles.flicker : ""
-      }`}
+      className={clsx(
+        styles.typography,
+        active && styles.animate,
+        flicker && styles.flicker
+      )}
       onClick={() => !flicker && setActive(!active)}
     >
       {children}
