@@ -11,7 +11,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>D for Dilly Dally</title>
+        <title>D4D</title>
       </Head>
 
       <main className={clsx(styles.fullScreenFlexBox, neonStyles.background)}>

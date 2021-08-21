@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta name="description" content="I'm busy dilly dallying." />
+          <meta name="description" content="I'm busy dillydallying." />
           <meta name="theme-color" content={theme.palette.primary.main} />
           {/* Ref: https://css-tricks.com/emojis-as-favicons/ */}
           <link
