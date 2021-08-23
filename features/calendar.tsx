@@ -38,13 +38,28 @@ const defaultConfig: Omit<TimeRangeSvgProps, "data"> = {
     },
   ],
 
-  width: 500,
+  width: 320,
   height: 280,
   margin: {
     top: 40,
     right: 40,
     bottom: 40,
     left: 40,
+  },
+};
+
+const smConfig: Omit<TimeRangeSvgProps, "data"> = {
+  ...defaultConfig,
+  weekdayTicks: [],
+  weekdayLegendOffset: 24,
+  monthLegendOffset: 10,
+  legends: [],
+
+  width: 288,
+  height: 160,
+  margin: {
+    top: 30,
+    bottom: 10,
   },
 };
 
@@ -61,7 +76,7 @@ const StyledTimeRange = ({ data }: StyledTimeRangeProps): ReactElement => {
   return (
     // Disable ssr for dev
     <NoSsr>
-      <TimeRange {...defaultConfig} data={data} />;
+      <TimeRange {...smConfig} data={data} />
     </NoSsr>
   );
 };

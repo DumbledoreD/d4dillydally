@@ -1,8 +1,11 @@
+import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
+import Stack from "@material-ui/core/Stack";
+import Typography from "@material-ui/core/Typography";
 import { NextPage } from "next";
 import Head from "next/head";
 
-import StyledTimeRange from "components/StyledTimeRange";
+import StyledTimeRange from "features/calendar";
 
 const Home: NextPage = () => {
   return (
@@ -11,8 +14,35 @@ const Home: NextPage = () => {
         <title>Calendar</title>
       </Head>
 
-      <Container component="main">
-        <StyledTimeRange data={genDate(new Date())} />
+      <Container fixed component="header">
+        <Typography variant="h1">Calendar</Typography>
+        <Typography variant="subtitle1">
+          To dally, or not to dally, that is the question.
+        </Typography>
+      </Container>
+
+      <Container fixed component="main">
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={2}
+        >
+          <Box
+            component="section"
+            sx={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <Typography variant="h2" sx={{ alignSelf: "start" }}>
+              Task
+            </Typography>
+            <StyledTimeRange data={genDate(new Date())} />
+          </Box>
+        </Stack>
       </Container>
     </>
   );
