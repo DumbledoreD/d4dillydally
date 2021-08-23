@@ -1,8 +1,9 @@
 import { ReactElement } from "react";
+import NoSsr from "@material-ui/core/NoSsr";
 import { TimeRange, TimeRangeSvgProps } from "@nivo/calendar";
 
 const colors = [
-  "#eeeeee",
+  "#eee",
   "#d9ed92",
   "#b5e48c",
   "#99d98c",
@@ -16,10 +17,7 @@ const colors = [
 ];
 
 const defaultConfig: Omit<TimeRangeSvgProps, "data"> = {
-  square: true,
-  dayRadius: 5,
-  daySpacing: 0,
-  dayBorderWidth: 1,
+  dayBorderWidth: 2,
 
   minValue: 0,
   maxValue: 10,
@@ -29,14 +27,14 @@ const defaultConfig: Omit<TimeRangeSvgProps, "data"> = {
   monthLegendOffset: 10,
   legends: [
     {
-      anchor: "bottom",
+      anchor: "bottom-left",
       direction: "row",
       itemDirection: "top-to-bottom",
       itemCount: 10,
       itemWidth: 32,
       itemHeight: 36,
       translateY: -50,
-      translateX: -5,
+      translateX: 68,
     },
   ],
 
@@ -60,7 +58,12 @@ type StyledTimeRangeProps = {
 };
 
 const StyledTimeRange = ({ data }: StyledTimeRangeProps): ReactElement => {
-  return <TimeRange {...defaultConfig} data={data} />;
+  return (
+    // Disable ssr for dev
+    <NoSsr>
+      <TimeRange {...defaultConfig} data={data} />;
+    </NoSsr>
+  );
 };
 
 export default StyledTimeRange;
