@@ -22,7 +22,7 @@ const NeonLighting = ({
     const timer = setTimeout(() => {
       setFlicker(false);
       setActive(true);
-    }, 5000);
+    }, 8000);
     return () => clearTimeout(timer);
   }, []);
 

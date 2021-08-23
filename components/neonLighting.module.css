@@ -14,7 +14,7 @@
 
 .typography {
   color: #ffdd1b;
-  cursor: pointer;
+  cursor: grab;
   margin: 0;
 
   font-family: Pacifico;
@@ -32,7 +32,7 @@
 
 .flicker {
   transition: none;
-  animation: flicker 2s linear 1s;
+  animation: flicker 3s linear 1s;
 }
 
 @keyframes neon {
@@ -48,16 +48,25 @@
 
 @keyframes flicker {
   0%,
-  50%,
-  60% {
+  19.999%,
+  22%,
+  62.999%,
+  64%,
+  64.999%,
+  70%,
+  100% {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffdd1b,
       0 0 35px #ffdd1b, 0 0 40px #ffdd1b, 0 0 50px #ffdd1b, 0 0 75px #ffdd1b;
+    opacity: 0.99;
   }
-
-  5%,
-  49%,
-  55%,
-  70% {
-    text-shadow: none;
+  20%,
+  21.999%,
+  63%,
+  63.999%,
+  65%,
+  69.999% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffdd1b,
+      0 0 35px #ffdd1b, 0 0 40px #ffdd1b, 0 0 50px #ffdd1b, 0 0 75px #ffdd1b;
+    opacity: 0.4;
   }
 }
