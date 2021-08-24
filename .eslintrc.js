@@ -1,9 +1,14 @@
 module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: ["./tsconfig.eslint.json"],
+  },
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "next/core-web-vitals",
     "prettier",
   ],
@@ -30,6 +35,7 @@ module.exports = {
       },
     ],
     "simple-import-sort/exports": "error",
+    "@typescript-eslint/consistent-type-imports": "error",
   },
   overrides: [
     {

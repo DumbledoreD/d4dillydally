@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import Head from "next/head";
 
 import NeonLighting from "components/NeonLighting";

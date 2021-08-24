@@ -1,6 +1,7 @@
-import { ReactElement } from "react";
+import type { ReactElement } from "react";
 import NoSsr from "@material-ui/core/NoSsr";
-import { TimeRange, TimeRangeSvgProps } from "@nivo/calendar";
+import type { TimeRangeSvgProps } from "@nivo/calendar";
+import { TimeRange } from "@nivo/calendar";
 
 const colors = [
   "#eee",
@@ -63,7 +64,7 @@ const smConfig: Omit<TimeRangeSvgProps, "data"> = {
   },
 };
 
-type DayCount = {
+export type DayCount = {
   day: string;
   value: number;
 };
