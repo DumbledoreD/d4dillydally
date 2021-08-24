@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import type { DayCount } from "features/calendar/StyledTimeRange";
 import StyledTimeRange from "features/calendar/StyledTimeRange";
 
-type CalendarStackItemProps = {
+export type CalendarStackItemProps = {
   header: string;
   data: DayCount[];
 };
