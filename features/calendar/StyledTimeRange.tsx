@@ -1,4 +1,3 @@
-import type { ReactElement } from "react";
 import NoSsr from "@material-ui/core/NoSsr";
 import type { TimeRangeSvgProps } from "@nivo/calendar";
 import { TimeRange } from "@nivo/calendar";
@@ -73,7 +72,7 @@ type StyledTimeRangeProps = {
   data: DayCount[];
 };
 
-const StyledTimeRange = ({ data }: StyledTimeRangeProps): ReactElement => {
+const StyledTimeRange = ({ data }: StyledTimeRangeProps): JSX.Element => {
   return (
     // Disable ssr for dev
     <NoSsr>
