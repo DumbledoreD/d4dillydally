@@ -1,6 +1,11 @@
 import NoSsr from "@material-ui/core/NoSsr";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import type { TimeRangeSvgProps } from "@nivo/calendar";
 import { TimeRange } from "@nivo/calendar";
+
+// TODO(ydeng): Does MUI has things like this?
+const t8 = (multiplier: number) => multiplier * 8;
 
 const colors = [
   "#eee",
@@ -16,51 +21,102 @@ const colors = [
   "#184e77",
 ];
 
-const defaultConfig: Omit<TimeRangeSvgProps, "data"> = {
+const baseConfig: Omit<TimeRangeSvgProps, "data" | "height" | "width"> = {
   dayBorderWidth: 2,
+  weekdayTicks: [0, 1, 2, 3, 4, 5, 6],
 
   minValue: 0,
-  maxValue: 10,
+  maxValue: colors.length,
   colors,
+};
 
-  weekdayTicks: [1, 3, 5],
-  monthLegendOffset: 10,
+const xsConfig: Omit<TimeRangeSvgProps, "data"> = {
+  ...baseConfig,
+  weekdayTicks: [],
+  weekdayLegendOffset: t8(3),
+  monthLegendOffset: t8(1),
+  legends: [],
+
+  width: t8(36),
+  height: t8(20),
+  margin: {
+    top: t8(3),
+    bottom: t8(1),
+  },
+};
+
+const smConfig: Omit<TimeRangeSvgProps, "data"> = {
+  ...baseConfig,
+  weekdayLegendOffset: t8(13),
+  monthLegendOffset: t8(2),
+
+  width: t8(69),
+  height: t8(40),
+  margin: {
+    top: t8(5),
+    right: t8(5),
+    bottom: t8(5),
+    left: t8(5),
+  },
+
   legends: [
     {
       anchor: "bottom-left",
       direction: "row",
       itemDirection: "top-to-bottom",
-      itemCount: 10,
-      itemWidth: 32,
-      itemHeight: 36,
-      translateY: -50,
-      translateX: 68,
+      itemCount: colors.length,
+      itemWidth: t8(4),
+      itemHeight: t8(2),
+      symbolSize: t8(3),
+      translateY: -t8(12),
+      translateX: 100,
     },
   ],
 
-  width: 320,
-  height: 280,
-  margin: {
-    top: 40,
-    right: 40,
-    bottom: 40,
-    left: 40,
+  theme: {
+    fontSize: 14,
   },
 };
 
-const smConfig: Omit<TimeRangeSvgProps, "data"> = {
-  ...defaultConfig,
-  weekdayTicks: [],
-  weekdayLegendOffset: 24,
-  monthLegendOffset: 10,
-  legends: [],
+const mdConfig: Omit<TimeRangeSvgProps, "data"> = {
+  ...baseConfig,
+  weekdayLegendOffset: t8(16),
+  monthLegendOffset: t8(3),
 
-  width: 288,
-  height: 160,
+  width: t8(106),
+  height: t8(62),
   margin: {
-    top: 30,
-    bottom: 10,
+    top: t8(8),
+    right: t8(10),
+    bottom: t8(8),
+    left: t8(10),
   },
+
+  legends: [
+    {
+      anchor: "bottom-left",
+      direction: "row",
+      itemDirection: "top-to-bottom",
+      itemCount: colors.length,
+      itemWidth: t8(6),
+      itemHeight: t8(5),
+      translateY: -t8(18),
+      translateX: 126,
+      symbolSize: t8(5),
+    },
+  ],
+
+  theme: {
+    fontSize: 20,
+  },
+};
+
+const useResponsiveConfig = () => {
+  const theme = useTheme();
+  const sm = useMediaQuery(theme.breakpoints.up("sm"));
+  const md = useMediaQuery(theme.breakpoints.up("md"));
+
+  return md ? mdConfig : sm ? smConfig : xsConfig;
 };
 
 export type DayCount = {
@@ -73,10 +129,12 @@ type StyledTimeRangeProps = {
 };
 
 const StyledTimeRange = ({ data }: StyledTimeRangeProps): JSX.Element => {
+  const config = useResponsiveConfig();
+
   return (
     // Disable ssr for dev
     <NoSsr>
-      <TimeRange {...smConfig} data={data} />
+      <TimeRange {...config} data={data} />
     </NoSsr>
   );
 };

@@ -35,12 +35,7 @@ type CalendarStackProps = {
 
 const CalendarStack = ({ data }: CalendarStackProps): JSX.Element => {
   return (
-    <Stack
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
-      spacing={2}
-    >
+    <Stack spacing={4} mt={4}>
       {data.map((dataItem) => (
         <CalendarStackItem key={dataItem.header} {...dataItem} />
       ))}

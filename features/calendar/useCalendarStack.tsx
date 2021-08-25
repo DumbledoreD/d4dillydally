@@ -18,11 +18,6 @@ const genData = (end: Date) => {
     curDate.setDate(curDate.getDate() + 1);
   }
 
-  data.push({
-    value: 10,
-    day: curDate.toISOString().split("T")[0],
-  });
-
   return data;
 };
 
