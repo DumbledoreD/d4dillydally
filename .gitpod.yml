@@ -6,7 +6,7 @@ tasks:
     command: echo "export PIP_USER=false" >> ~/.bashrc && . ~/.bashrc && exit
 
   - name: personalize terminal
-    command: cat .personal.bashrc >> ~/.bashrc && . ~/.bashrc && exit
+    command: cat .personal.bashrc >> ~/.bashrc && . ~/.bashrc
 
   - name: yarn install
     command: yarn install && exit

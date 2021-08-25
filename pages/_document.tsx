@@ -6,14 +6,14 @@ import Document, { Head, Html, Main, NextScript } from "next/document";
 
 import { createEmotionCache, theme } from "features/theme";
 
-export default class MyDocument extends Document {
+class MyDocument extends Document {
   // TODO(ydeng): Why do I need to type this? Is there a better way?
   // eslint-disable-next-line
   render() {
     return (
       <Html lang="en">
         <Head>
-          <meta name="description" content="I'm busy dilly dallying." />
+          <meta name="description" content="I'm busy dillydallying." />
           <meta name="theme-color" content={theme.palette.primary.main} />
           {/* Ref: https://css-tricks.com/emojis-as-favicons/ */}
           <link
@@ -73,6 +73,7 @@ MyDocument.getInitialProps = async (ctx) => {
   // You can consider sharing the same emotion cache between all the SSR requests to speed up performance.
   // However, be aware that it can have global side effects.
   const cache = createEmotionCache();
+  // eslint-disable-next-line @typescript-eslint/unbound-method
   const { extractCriticalToChunks } = createEmotionServer(cache);
 
   ctx.renderPage = () =>
@@ -105,3 +106,5 @@ MyDocument.getInitialProps = async (ctx) => {
     ],
   };
 };
+
+export default MyDocument;

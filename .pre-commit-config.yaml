@@ -21,3 +21,11 @@ repos:
         args: ["--max-warnings=0", "--fix"]
         files: \.[jt]sx?$
         types: [file]
+  - repo: local
+    hooks:
+      - id: tsc
+        name: tsc
+        entry: yarn tsc
+        files: \.[jt]sx?$
+        language: system
+        pass_filenames: false

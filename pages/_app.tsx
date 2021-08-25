@@ -1,9 +1,10 @@
 // Ref: https://github.com/mui-org/material-ui/tree/next/examples/nextjs-with-typescript
 
-import { CacheProvider, EmotionCache } from "@emotion/react";
+import type { EmotionCache } from "@emotion/react";
+import { CacheProvider } from "@emotion/react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { AppProps } from "next/app";
+import type { AppProps } from "next/app";
 import Head from "next/head";
 
 import { createEmotionCache, theme } from "features/theme";
@@ -16,6 +17,7 @@ interface MyAppProps extends AppProps {
 }
 
 const MyApp = (props: MyAppProps): JSX.Element => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (
