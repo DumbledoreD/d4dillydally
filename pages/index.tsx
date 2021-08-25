@@ -12,6 +12,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>D4D</title>
+        <meta name="theme-color" content="2b2b2b" />
       </Head>
 
       <main className={clsx(styles.fullScreenFlexBox, neonStyles.background)}>

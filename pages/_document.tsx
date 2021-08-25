@@ -4,7 +4,7 @@ import * as React from "react";
 import createEmotionServer from "@emotion/server/create-instance";
 import Document, { Head, Html, Main, NextScript } from "next/document";
 
-import { createEmotionCache, theme } from "features/theme";
+import { createEmotionCache } from "features/theme";
 
 class MyDocument extends Document {
   // TODO(ydeng): Why do I need to type this? Is there a better way?
@@ -14,7 +14,6 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta name="description" content="I'm busy dillydallying." />
-          <meta name="theme-color" content={theme.palette.primary.main} />
           {/* Ref: https://css-tricks.com/emojis-as-favicons/ */}
           <link
             rel="icon"

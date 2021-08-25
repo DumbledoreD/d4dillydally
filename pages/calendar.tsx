@@ -12,6 +12,7 @@ const Calendar: NextPage = () => {
     <>
       <Head>
         <title>Calendar</title>
+        <meta name="theme-color" content="#ffffff" />
       </Head>
 
       <Container fixed component="header">
