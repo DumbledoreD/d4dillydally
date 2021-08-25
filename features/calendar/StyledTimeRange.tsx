@@ -119,7 +119,7 @@ const useResponsiveConfig = () => {
   return md ? mdConfig : sm ? smConfig : xsConfig;
 };
 
-export type DayCount = {
+type DayCount = {
   day: string;
   value: number;
 };
@@ -140,3 +140,5 @@ const StyledTimeRange = ({ data }: StyledTimeRangeProps): JSX.Element => {
 };
 
 export default StyledTimeRange;
+
+export type { DayCount };

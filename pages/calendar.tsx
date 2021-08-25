@@ -5,7 +5,7 @@ import Head from "next/head";
 
 import useCalendarStack from "features/calendar/useCalendarStack";
 
-const Home: NextPage = () => {
+const Calendar: NextPage = () => {
   const [CalendarStack, stackData] = useCalendarStack();
 
   return (
@@ -28,4 +28,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Calendar;

@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import type { DayCount } from "features/calendar/StyledTimeRange";
 import StyledTimeRange from "features/calendar/StyledTimeRange";
 
-export type CalendarStackItemProps = {
+type CalendarStackItemProps = {
   header: string;
   data: DayCount[];
 };
@@ -44,3 +44,5 @@ const CalendarStack = ({ data }: CalendarStackProps): JSX.Element => {
 };
 
 export default CalendarStack;
+
+export type { CalendarStackItemProps };
