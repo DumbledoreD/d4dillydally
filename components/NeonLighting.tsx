@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 
 import styles from "./neonLighting.module.css";
@@ -14,29 +14,18 @@ const NeonLighting = ({
   component: Component,
   className,
 }: NeonLightingProps): JSX.Element => {
-  const [flicker, setFlicker] = useState<boolean>(true);
-  const [pulsate, setPulsate] = useState<boolean>(false);
-
-  // Initial flicker
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setFlicker(false);
-      setPulsate(true);
-    }, 8000);
-    return () => clearTimeout(timer);
-  }, []);
+  const [on, setOn] = useState(true);
 
   return (
     <Component
-      className={clsx(
-        styles.typography,
-        pulsate && styles.pulsate,
-        flicker && styles.flicker,
-        className
-      )}
-      onClick={() => !flicker && setPulsate(!pulsate)}
+      className={clsx(styles.typography, on && styles.on, className)}
+      onClick={() => setOn(!on)}
     >
-      {children}
+      {children[0]}
+      <span className={clsx(styles.flicker, on && styles.on)}>
+        {children[1]}
+      </span>
+      {children.substring(2)}
     </Component>
   );
 };
