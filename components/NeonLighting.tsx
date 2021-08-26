@@ -15,13 +15,13 @@ const NeonLighting = ({
   className,
 }: NeonLightingProps): JSX.Element => {
   const [flicker, setFlicker] = useState<boolean>(true);
-  const [active, setActive] = useState<boolean>(false);
+  const [pulsate, setPulsate] = useState<boolean>(false);
 
   // Initial flicker
   useEffect(() => {
     const timer = setTimeout(() => {
       setFlicker(false);
-      setActive(true);
+      setPulsate(true);
     }, 8000);
     return () => clearTimeout(timer);
   }, []);
@@ -30,11 +30,11 @@ const NeonLighting = ({
     <Component
       className={clsx(
         styles.typography,
-        active && styles.animate,
+        pulsate && styles.pulsate,
         flicker && styles.flicker,
         className
       )}
-      onClick={() => !flicker && setActive(!active)}
+      onClick={() => !flicker && setPulsate(!pulsate)}
     >
       {children}
     </Component>

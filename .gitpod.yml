@@ -1,5 +1,5 @@
 tasks:
-  - init: ./.init-workspace.sh && exit
+  - init: ./.init-workspace.sh
 
   # Ref: https://github.com/gitpod-io/gitpod/issues/1997
   - name: pre-commit workaround

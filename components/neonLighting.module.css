@@ -26,7 +26,7 @@
   transition: text-shadow 1s;
 }
 
-.animate {
+.pulsate {
   animation: neon 1.5s ease-in-out infinite alternate;
 }
 
