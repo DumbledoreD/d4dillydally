@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import NeonLighting from "components/NeonLighting";
+import AppSpeedDial from "features/AppSpeedDial";
 
 import neonStyles from "components/neonLighting.module.css";
 import styles from "pageStyles/index.module.css";
@@ -20,6 +21,8 @@ const Home: NextPage = () => {
           D4DillyDally
         </NeonLighting>
       </main>
+
+      <AppSpeedDial />
     </>
   );
 };
