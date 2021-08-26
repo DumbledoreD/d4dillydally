@@ -4,19 +4,23 @@ import SpeedDial from "@material-ui/core/SpeedDial";
 import SpeedDialAction from "@material-ui/core/SpeedDialAction";
 import SpeedDialIcon from "@material-ui/core/SpeedDialIcon";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
+import GitHubIcon from "@material-ui/icons/GitHub";
 import HomeIcon from "@material-ui/icons/Home";
-import ShareIcon from "@material-ui/icons/Share";
+import { useRouter } from "next/router";
 
 const actions = [
-  { icon: <ShareIcon />, name: "Share" },
-  { icon: <CalendarTodayIcon />, name: "Calendar" },
-  { icon: <HomeIcon />, name: "Home" },
+  { icon: <HomeIcon />, name: "Home", href: "/" },
+  { icon: <CalendarTodayIcon />, name: "Calendar", href: "/calendar" },
+  {
+    icon: <GitHubIcon />,
+    name: "GitHub",
+    href: "https://github.com/DumbledoreD/d4dillydally",
+  },
 ];
 
 const AppSpeedDial = (): JSX.Element => {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   return (
     <>
@@ -33,8 +37,8 @@ const AppSpeedDial = (): JSX.Element => {
           },
         }}
         icon={<SpeedDialIcon />}
-        onClose={handleClose}
-        onOpen={handleOpen}
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
         open={open}
       >
         {actions.map((action) => (
@@ -43,7 +47,7 @@ const AppSpeedDial = (): JSX.Element => {
             icon={action.icon}
             tooltipTitle={action.name}
             tooltipOpen
-            onClick={handleClose}
+            onClick={() => router.push(action.href)}
           />
         ))}
       </SpeedDial>
