@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import type { NextPage } from "next";
 import Head from "next/head";
 
+import AppSpeedDial from "features/AppSpeedDial";
 import useCalendarStack from "features/calendar/useCalendarStack";
 
 const Calendar: NextPage = () => {
@@ -12,6 +13,7 @@ const Calendar: NextPage = () => {
     <>
       <Head>
         <title>Calendar</title>
+        <meta name="theme-color" content="#ffffff" />
       </Head>
 
       <Container fixed component="header">
@@ -24,6 +26,8 @@ const Calendar: NextPage = () => {
       <Container fixed component="main">
         <CalendarStack data={stackData} />
       </Container>
+
+      <AppSpeedDial fabStyle={{ color: "white", background: "black" }} />
     </>
   );
 };

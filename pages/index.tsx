@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import NeonLighting from "components/NeonLighting";
+import AppSpeedDial from "features/AppSpeedDial";
 
 import neonStyles from "components/neonLighting.module.css";
 import styles from "pageStyles/index.module.css";
@@ -12,6 +13,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>D4D</title>
+        <meta name="theme-color" content="2b2b2b" />
       </Head>
 
       <main className={clsx(styles.fullScreenFlexBox, neonStyles.background)}>
@@ -19,6 +21,8 @@ const Home: NextPage = () => {
           D4DillyDally
         </NeonLighting>
       </main>
+
+      <AppSpeedDial fabStyle={{ color: "black", background: "white" }} />
     </>
   );
 };

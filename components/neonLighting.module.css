@@ -1,4 +1,5 @@
 /* Ref: https://codepen.io/FelixRilling/pen/qzfoc */
+/* Ref: https://codepen.io/DevchamploO/pen/NBWBGq */
 
 .background {
   background-color: #222222;
@@ -19,31 +20,21 @@
 
   font-family: Pacifico;
   font-size: 7em;
+  letter-spacing: 4px;
   text-align: center;
   user-select: none;
 
   animation: none;
-  transition: text-shadow 1s;
 }
 
-.animate {
-  animation: neon 1.5s ease-in-out infinite alternate;
-}
-
-.flicker {
+.on {
   transition: none;
-  animation: flicker 3s linear 1s;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffdd1b,
+    0 0 35px #ffdd1b, 0 0 40px #ffdd1b, 0 0 50px #ffdd1b, 0 0 75px #ffdd1b;
 }
 
-@keyframes neon {
-  from {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffdd1b,
-      0 0 35px #ffdd1b, 0 0 40px #ffdd1b, 0 0 50px #ffdd1b, 0 0 75px #ffdd1b;
-  }
-  to {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffdd1b,
-      0 0 70px #ffdd1b, 0 0 80px #ffdd1b, 0 0 100px #ffdd1b, 0 0 150px #ffdd1b;
-  }
+.on.flicker {
+  animation: flicker 3s linear 3s infinite;
 }
 
 @keyframes flicker {
@@ -55,8 +46,6 @@
   64.999%,
   70%,
   100% {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffdd1b,
-      0 0 35px #ffdd1b, 0 0 40px #ffdd1b, 0 0 50px #ffdd1b, 0 0 75px #ffdd1b;
     opacity: 0.99;
   }
   20%,
@@ -65,8 +54,6 @@
   63.999%,
   65%,
   69.999% {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffdd1b,
-      0 0 35px #ffdd1b, 0 0 40px #ffdd1b, 0 0 50px #ffdd1b, 0 0 75px #ffdd1b;
     opacity: 0.4;
   }
 }
