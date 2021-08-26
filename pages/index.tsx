@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         </NeonLighting>
       </main>
 
-      <AppSpeedDial />
+      <AppSpeedDial fabStyle={{ color: "black", background: "white" }} />
     </>
   );
 };

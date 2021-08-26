@@ -3,6 +3,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import SpeedDial from "@material-ui/core/SpeedDial";
 import SpeedDialAction from "@material-ui/core/SpeedDialAction";
 import SpeedDialIcon from "@material-ui/core/SpeedDialIcon";
+import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import HomeIcon from "@material-ui/icons/Home";
@@ -18,9 +19,16 @@ const actions = [
   },
 ];
 
-const AppSpeedDial = (): JSX.Element => {
+type AppSpeedDialProps = {
+  fabStyle?: { color: string; background: string };
+};
+
+const AppSpeedDial = ({ fabStyle }: AppSpeedDialProps): JSX.Element => {
   const router = useRouter();
+
   const [open, setOpen] = useState(false);
+
+  const hidden = useScrollTrigger({ threshold: 10 });
 
   return (
     <>
@@ -28,18 +36,16 @@ const AppSpeedDial = (): JSX.Element => {
       <SpeedDial
         ariaLabel="SpeedDial tooltip example"
         sx={{
-          position: "absolute",
+          position: "fixed",
           bottom: 16,
           right: 16,
-          "& .MuiSpeedDial-fab, & .MuiSpeedDial-fab:hover": {
-            color: "black",
-            background: "white",
-          },
+          "& .MuiSpeedDial-fab, & .MuiSpeedDial-fab:hover": fabStyle,
         }}
         icon={<SpeedDialIcon />}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
+        hidden={hidden}
       >
         {actions.map((action) => (
           <SpeedDialAction
