@@ -5,11 +5,23 @@ tasks:
       python -m pip install --upgrade pip
       python -m pip install --user pre-commit
       pre-commit install
+    command: |
       cat .personal.bashrc >> ~/.bashrc
       printf "\nexport PIP_USER=false" >> ~/.bashrc
       . ~/.bashrc
       pre-commit
+      gp sync-done ps
+      exit
 
   - name: dev server
     init: yarn install
-    command: yarn dev
+    command: |
+      gp sync-await ps
+      . ~/.bashrc
+      yarn dev
+
+vscode:
+  extensions:
+    - dbaeumer.vscode-eslint
+    - eamodio.gitlens
+    - streetsidesoftware.code-spell-checker
