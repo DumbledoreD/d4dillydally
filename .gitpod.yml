@@ -1,12 +1,13 @@
 tasks:
-  - init: ./.init-workspace.sh
+  # Ref: pre-commit workaround https://github.com/gitpod-io/gitpod/issues/1997
+  - name: personal setup
+    init: |
+      python -m pip install --upgrade pip
+      python -m pip install --user pre-commit
+      pre-commit install
+      cat .personal.bashrc >> ~/.bashrc
+      printf "\nexport PIP_USER=false" >> ~/.bashrc
 
-  # Ref: https://github.com/gitpod-io/gitpod/issues/1997
-  - name: pre-commit workaround
-    command: echo "export PIP_USER=false" >> ~/.bashrc && . ~/.bashrc && exit
-
-  - name: personalize terminal
-    command: cat .personal.bashrc >> ~/.bashrc && . ~/.bashrc && exit
-
-  - name: yarn install
-    command: yarn install && exit
+  - name: dev server
+    init: yarn install
+    command: yarn dev
