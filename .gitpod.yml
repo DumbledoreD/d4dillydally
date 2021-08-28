@@ -9,8 +9,8 @@ tasks:
       cat .personal.bashrc >> ~/.bashrc
       printf "\nexport PIP_USER=false" >> ~/.bashrc
       . ~/.bashrc
-      pre-commit
       gp sync-done ps
+      pre-commit
       exit
 
   - name: dev server
@@ -19,6 +19,11 @@ tasks:
       gp sync-await ps
       . ~/.bashrc
       yarn dev
+
+  - name: amplify
+    init: |
+      curl -sL https://aws-amplify.github.io/amplify-cli/install | bash && $SHELL
+      exit
 
 vscode:
   extensions:

@@ -1,0 +1,8 @@
+type NonDalliance
+  @model
+  @auth(rules: [{ allow: owner }, { allow: public, operations: [read] }]) {
+  id: ID!
+  activity: String!
+  date: AWSDate!
+  value: Int!
+}

@@ -1,0 +1,16 @@
+projects:
+  d4dillydally:
+    schemaPath: amplify/backend/api/d4dillydally/build/schema.graphql
+    includes:
+      - graphql/**/*.ts
+    excludes:
+      - graphql/api.ts
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: graphql/api.ts
+        docsFilePath: graphql
+extensions:
+  amplify:
+    version: 3
