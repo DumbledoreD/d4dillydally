@@ -1,7 +1,6 @@
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { Amplify, withSSRContext } from "aws-amplify";
-import awsExports from "aws-exports";
+import { withSSRContext } from "aws-amplify";
 import type { ListNonDalliancesQuery, NonDalliance } from "graphql/api";
 import { listNonDalliances } from "graphql/queries";
 import type { NextPage } from "next";
@@ -12,8 +11,6 @@ import AppSpeedDial from "features/AppSpeedDial";
 import CalendarStack from "features/calendar/CalendarStack";
 import { prepareCalendarData } from "features/calendar/dataFetching";
 
-Amplify.configure({ ...awsExports, ssr: true });
-
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const SSR = withSSRContext({ req });
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
@@ -22,7 +19,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   };
   return {
     props: {
-      nonDalliances: response.data.listNonDalliances?.items,
+      nonDalliances: response.data.listNonDalliances?.items || [],
     },
   };
 };

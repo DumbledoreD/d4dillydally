@@ -4,10 +4,14 @@ import type { EmotionCache } from "@emotion/react";
 import { CacheProvider } from "@emotion/react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/core/styles";
+import { Amplify } from "aws-amplify";
+import awsExports from "aws-exports";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
 import { createEmotionCache, theme } from "features/theme";
+
+Amplify.configure({ ...awsExports, ssr: true });
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
