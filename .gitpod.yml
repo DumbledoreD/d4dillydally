@@ -1,12 +1,32 @@
 tasks:
-  - init: ./.init-workspace.sh
+  # Ref: pre-commit workaround https://github.com/gitpod-io/gitpod/issues/1997
+  - name: personal setup
+    init: |
+      python -m pip install --upgrade pip
+      python -m pip install --user pre-commit
+      pre-commit install
+    command: |
+      cat .personal.bashrc >> ~/.bashrc
+      printf "\nexport PIP_USER=false" >> ~/.bashrc
+      . ~/.bashrc
+      gp sync-done ps
+      pre-commit
+      exit
 
-  # Ref: https://github.com/gitpod-io/gitpod/issues/1997
-  - name: pre-commit workaround
-    command: echo "export PIP_USER=false" >> ~/.bashrc && . ~/.bashrc && exit
+  - name: dev server
+    init: yarn install
+    command: |
+      gp sync-await ps
+      . ~/.bashrc
+      yarn dev
 
-  - name: personalize terminal
-    command: cat .personal.bashrc >> ~/.bashrc && . ~/.bashrc && exit
+  - name: amplify
+    init: |
+      curl -sL https://aws-amplify.github.io/amplify-cli/install | bash && $SHELL
+      exit
 
-  - name: yarn install
-    command: yarn install && exit
+vscode:
+  extensions:
+    - dbaeumer.vscode-eslint
+    - eamodio.gitlens
+    - streetsidesoftware.code-spell-checker
